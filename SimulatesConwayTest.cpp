@@ -1,15 +1,23 @@
 #include "SimulatesConway.h"
+#include "GeneratesWorldMock.h"
 #include <gtest/gtest.h>
+#include <gmock/gmock.h>
 
 using namespace testing;
 
-class SimulatesConwayTest : public Test
+class SimulatesConwayTest : public Test 
 {
 public:
+    SimulatesConwayTest()
+        : Simulation(MyGeneratesWorld)
+    {}
+    GeneratesWorldMock MyGeneratesWorld;
     SimulatesConway Simulation;
 };
 
-TEST(SimulatesConwayTest, FailingTest)
+TEST_F(SimulatesConwayTest, SimulateCallsGeneratesSeedWorld)
 {
-    EXPECT_TRUE(false);
+    World seedWorld;
+    EXPECT_CALL(MyGeneratesWorld, Generate()).Times(AtLeast(1)).WillOnce(Return<World>(seedWorld));
+    Simulation.Simulate();
 }

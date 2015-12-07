@@ -13,10 +13,11 @@ add_subdirectory(${CMAKE_BINARY_DIR}/gtest-src
 # Add the gtest include directory, since gtest
 # doesn't add that dependency to its gtest target
 target_include_directories(gtest INTERFACE
-  "${CMAKE_BINARY_DIR}/gtest-src/googletest/include")
+  "${CMAKE_BINARY_DIR}/gtest-src/googletest/include"
+  "${CMAKE_BINARY_DIR}/gtest-src/googlemock/include")
 
 project(simulatesConway)
 cmake_minimum_required(VERSION 2.8)
 aux_source_directory(. SRC_LIST)
 add_executable(${PROJECT_NAME} ${SRC_LIST})
-target_link_libraries(${PROJECT_NAME}  gtest)
+target_link_libraries(${PROJECT_NAME}  gtest gmock)
