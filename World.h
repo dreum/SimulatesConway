@@ -6,6 +6,9 @@ class World
 {
 public:
     World();
+
+    bool operator==(const World& rhs) const;
+private:
 };
 
 #endif // WORLD_H

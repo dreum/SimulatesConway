@@ -5,3 +5,8 @@ World::World()
 
 }
 
+bool World::operator==(const World& rhs) const
+{
+   return *this==rhs;
+}
+

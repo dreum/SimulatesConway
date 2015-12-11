@@ -1,14 +1,18 @@
 #include "SimulatesConway.h"
 #include "GeneratesWorldInterface.h"
+#include "OutputWorldInterface.h"
 
-SimulatesConway::SimulatesConway(const GeneratesWorldInterface &worldGenerator)
-    : WorldGenerator(worldGenerator)
+SimulatesConway::SimulatesConway(const GeneratesWorldInterface& worldGenerator, OutputWorldInterface& worldOutputer)
+   : WorldGenerator(worldGenerator)
+   , WorldOutputer(worldOutputer)
 {
 
 }
 
 void SimulatesConway::Simulate()
 {
-    WorldGenerator.Generate();
+   World seedWorld = WorldGenerator.Generate();
+
+   WorldOutputer.Output(seedWorld);
 }
 
