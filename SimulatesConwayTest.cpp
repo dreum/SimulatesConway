@@ -23,6 +23,6 @@ TEST_F(SimulatesConwayTest, SimulateCallsGenerateWorldAndOutputWorld)
 {
    World seedWorld;
    EXPECT_CALL(MyGeneratesWorld, Generate()).Times(AtLeast(1)).WillOnce(Return<World>(seedWorld));
-   EXPECT_CALL(MyOutputWorld, Output(Eq(seedWorld)));
+   EXPECT_CALL(MyOutputWorld, Output(seedWorld));
    Simulation.Simulate();
 }

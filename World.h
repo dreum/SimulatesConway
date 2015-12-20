@@ -7,7 +7,7 @@ class World
 public:
     World();
 
-    bool operator==(const World& rhs) const;
+    bool operator==(const World&) const;
 private:
 };
 
